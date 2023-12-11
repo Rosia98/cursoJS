@@ -1,0 +1,51 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>Title</label>
+          <input type="text" id="todo-title" />
+        </div>
+        <div>
+          <label>Completed</label>
+          <input type="checkbox" id="todo-completed" />
+        </div>
+
+        <button type="submit" id="submit-todo"></button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  // code here
+  async function createPost(title, completed) {
+  try {
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+    
+    const postData = { 
+      title: title, 
+      completed: completed,
+    };
+
+    // Configuración de la solicitud POST
+    const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json',
+  },
+    body: JSON.stringify(postData),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const newPost = await response.json();
+    
+    console.log('New Post:', newPost);
+  }catch (error) {
+    console.error('Error creating post:', error.message);
+  }
+}
+createPost('Nuevo título', false);
+</script>
