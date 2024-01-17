@@ -1,15 +1,10 @@
-const person = {
-  id: 1,
-  firstName: 'Mario',
-  lastName: 'Rossi',
-  age: 25,
-};
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
 
-const filtrarPerson = {
-  id: person.id,
-  age: person.age
-};
-
-const json = JSON.stringify(filtrarPerson);
-
-console.log(json); // Should return: { id: 1, age: 25 }
+const developer = new Person("Mario", "Rossi");
+//console.log(developer.firstName + " " + developer.lastName);
+console.log(`${desarrollador.primerNombre} ${desarrollador.apellido}`);
